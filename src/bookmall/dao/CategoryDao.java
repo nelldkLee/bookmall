@@ -51,6 +51,13 @@ public class CategoryDao extends AbstractDao<CategoryVo> {
 		}
 		return list;
 	}
+	
+	
+	@Override
+	public List<CategoryVo> getList(CategoryVo condition) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	public int update(int no, CategoryVo vo) {

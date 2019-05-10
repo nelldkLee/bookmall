@@ -58,6 +58,12 @@ public class MemberDao extends AbstractDao<MemberVo>{
 	}
 	
 	@Override
+	public List<MemberVo> getList(MemberVo condition) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public int update(int no, MemberVo vo) {
 		int result = 0;
 		try {

@@ -13,16 +13,22 @@ public class CategoryDaoTest extends AbstractTest{
 	@Override
 	public void testStart() {
 		dao = new CategoryDao();
-		//insertTest();
+		insertTest();
 		//getListTest();
 		//updateTest();
-		deleteTest();
+		//deleteTest();
 	}
 	
 	@Override
 	public void insertTest() {
 		CategoryVo vo = new CategoryVo();
+		vo.setCategoryName("자연과학");
+		dao.insert(vo);
+		vo.setCategoryName("정치");
+		dao.insert(vo);
 		vo.setCategoryName("컴퓨터과학");
+		dao.insert(vo);
+		vo.setCategoryName("인문");
 		dao.insert(vo);
 	}
 

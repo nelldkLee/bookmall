@@ -1,13 +1,16 @@
 package bookmall.vo;
 
+import java.sql.Date;
 import java.util.List;
 
 public class OrderVo {
 
 	private Long no;
+	private MemberVo memberVo;
 	private String orderCode;
-	private String orderPrice;
+	private Long orderPrice;
 	private String address;
+	private Date orderTime;
 	private List<BookVo> bookList;
 	
 	public Long getNo() {
@@ -22,10 +25,10 @@ public class OrderVo {
 	public void setOrderCode(String orderCode) {
 		this.orderCode = orderCode;
 	}
-	public String getOrderPrice() {
+	public Long getOrderPrice() {
 		return orderPrice;
 	}
-	public void setOrderPrice(String orderPrice) {
+	public void setOrderPrice(Long orderPrice) {
 		this.orderPrice = orderPrice;
 	}
 	public String getAddress() {
@@ -40,9 +43,23 @@ public class OrderVo {
 	public void setBookList(List<BookVo> bookList) {
 		this.bookList = bookList;
 	}
+	
+	public MemberVo getMemberVo() {
+		return memberVo;
+	}
+	public OrderVo setMemberVo(MemberVo memberVo) {
+		this.memberVo = memberVo;
+		return this;
+	}
+	public Date getOrderTime() {
+		return orderTime;
+	}
+	public void setOrderTime(Date orderTime) {
+		this.orderTime = orderTime;
+	}
 	@Override
 	public String toString() {
-		return "OrderVo [no=" + no + ", orderCode=" + orderCode + ", orderPrice=" + orderPrice + ", address=" + address
-				+ ", bookList=" + bookList + "]";
+		return "OrderVo [no=" + no + ", memberVo=" + memberVo + ", orderCode=" + orderCode + ", orderPrice="
+				+ orderPrice + ", address=" + address + ", orderTime=" + orderTime + ", bookList=" + bookList + "]";
 	}
 }

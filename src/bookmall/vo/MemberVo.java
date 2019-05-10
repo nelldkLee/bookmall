@@ -11,14 +11,16 @@ public class MemberVo {
 	public Long getNo() {
 		return no;
 	}
-	public void setNo(Long no) {
+	public MemberVo setNo(Long no) {
 		this.no = no;
+		return this;
 	}
 	public String getMemberName() {
 		return memberName;
 	}
-	public void setMemberName(String memberName) {
+	public MemberVo setMemberName(String memberName) {
 		this.memberName = memberName;
+		return this;
 	}
 	public String getPhoneNumber() {
 		return phoneNumber;

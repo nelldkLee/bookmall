@@ -11,7 +11,7 @@ public class BookDao extends AbstractDao<BookVo>{
 
 	public final String BOOK_INSERT = "INSERT INTO book(book_name, book_price, category_no) "
 			  + "VALUES(?,?,?)";  
-	public final String BOOK_LIST = "SELECT no, book_name, book_price, category.no, category.category_name " + 
+	public final String BOOK_LIST = "SELECT book.no, book_name, book_price, category.no, category.category_name " + 
 									"FROM book, category " + 
 									"where book.category_no = category.no";
 	public final String BOOK_UPDATE = "UPDATE book SET book_name=?, book_price=? WHERE no=?";
@@ -57,6 +57,12 @@ public class BookDao extends AbstractDao<BookVo>{
 			destroyedConnection(conn, pstmt);
 		}
 		return list;
+	}
+	
+	@Override
+	public List<BookVo> getList(BookVo condition) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
