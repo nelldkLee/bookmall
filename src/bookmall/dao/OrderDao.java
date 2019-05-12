@@ -2,7 +2,9 @@ package bookmall.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import bookmall.vo.BookVo;
 import bookmall.vo.MemberVo;
@@ -16,10 +18,12 @@ public class OrderDao extends AbstractDao<OrderVo>{
 									   "				  where date_format(a.orders_time,'%Y%m%d') = date_format(now(),'%Y%m%d')) " + 
 									   "       ,?,?)";
 	public final String ORDER_BOOK_INSERT = "INSERT INTO orders_book(book_no, orders_no, orders_count) VALUES(?,?,?)";
-	public final String ORDER_LIST = "SELECT m.member_name, orders_code, orders_price, address, orders_time " + 
-								 	 "	FROM orders o, member m " + 
-								 	 "WHERE o.member_no = ? " + 
-								 	 "	AND o.member_no = m.no";
+	public final String ORDER_LIST = "select m.member_name, orders_code, orders_price, address, orders_time, b.no, b.book_name, b.book_price, ob.orders_count\r\n" + 
+									 "	from orders o, member m, orders_book ob, book b " + 
+									 "where o.member_no = ? " + 
+									 "	and o.member_no = m.no " + 
+									 "  and o.no = ob.orders_no " + 
+									 "  and ob.book_no = b.no ";
 	
 	@Override
 	public int insert(OrderVo vo) {
@@ -61,6 +65,7 @@ public class OrderDao extends AbstractDao<OrderVo>{
 	@Override
 	public List<OrderVo> getList(OrderVo condition) {
 		List<OrderVo> list = new ArrayList<OrderVo>();
+		Map<String,OrderVo> ordersMap = new HashMap<>(); 
 		OrderVo vo = null;
 		try {
 			conn = getConnection();
@@ -70,10 +75,20 @@ public class OrderDao extends AbstractDao<OrderVo>{
 			while (rs.next()) {
 				vo = new OrderVo();
 				vo.setMemberVo(new MemberVo().setMemberName(rs.getString(1)));
+				String ordersCode = rs.getString(2);
 				vo.setOrderCode(rs.getString(2));
 				vo.setOrderPrice(rs.getLong(3));
 				vo.setAddress(rs.getString(4));
 				vo.setOrderTime(rs.getDate(5));
+				BookVo bookVo = new BookVo().setNo(rs.getLong(6)).setBookName(rs.getString(7)).setBookPrice(rs.getInt(8)).setBookCount(rs.getInt(9));
+				if(ordersMap.containsKey(ordersCode)) {
+					ordersMap.get(ordersCode).getBookList().add(bookVo);
+					continue;
+				}
+				List<BookVo> bookList = new ArrayList<>();
+				bookList.add(bookVo);
+				vo.setBookList(bookList);
+				ordersMap.put(ordersCode,vo);
 				list.add(vo);
 			}
 		} catch (SQLException e) {
@@ -86,8 +101,7 @@ public class OrderDao extends AbstractDao<OrderVo>{
 
 	@Override
 	public List<OrderVo> getList() {
-		// TODO Auto-generated method stub
-		return null;
+		return getList(new OrderVo().setMemberVo(new MemberVo().setNo(1L)));
 	}
 
 

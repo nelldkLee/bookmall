@@ -14,8 +14,8 @@ public class MemberDaoTest extends AbstractTest{
 	@Override
 	public void testStart() {
 		dao = new MemberDao();
-		//insertTest();
-		getListTest();
+		insertTest();
+		//getListTest();
 		//updateTest();
 		//deleteTest();
 	}

@@ -59,7 +59,9 @@ public class OrderVo {
 	}
 	@Override
 	public String toString() {
-		return "OrderVo [no=" + no + ", memberVo=" + memberVo + ", orderCode=" + orderCode + ", orderPrice="
-				+ orderPrice + ", address=" + address + ", orderTime=" + orderTime + ", bookList=" + bookList + "]";
+		return "주문코드 : " + orderCode + ", 주문 가격 : " + orderPrice 
+				+ ", 주소 : " + address + ", 주문 시간 : " + orderTime 
+				+ ", 상품 :" + bookList.get(0).getBookName() + "외 " + (bookList.size() -1) +"건";
 	}
+	
 }

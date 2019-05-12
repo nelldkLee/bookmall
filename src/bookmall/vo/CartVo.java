@@ -52,8 +52,10 @@ public class CartVo {
 	
 	@Override
 	public String toString() {
-		return "CartVo [memberNo=" + memberNo + ", bookNo=" + bookNo + ", cartCount=" + cartCount + ", memberName="
-				+ memberVo.getMemberName() + ", bookName=" + bookVo.getBookName() + ", bookPrice=" + bookVo.getBookPrice()+ "]";
+		return "번호(회원번호_책번호) : " + memberNo + "_"  + ", 회원 이름 : "
+				+ memberVo.getMemberName() + ", 책 이름 : " + bookVo.getBookName() 
+				+ ", 책 가격 : " + bookVo.getBookPrice() + ", 수량 : " + cartCount
+				+ ", 가격 : " + bookVo.getBookPrice() * cartCount;
 	}
 	@Override
 	public int hashCode() {

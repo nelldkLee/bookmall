@@ -39,8 +39,7 @@ public class CartDao extends AbstractDao<CartVo> {
 
 	@Override
 	public List<CartVo> getList() {
-		// TODO Auto-generated method stub
-		return null;
+		return getList(new CartVo().setMemberNo(1L));
 	}
 	
 	@Override

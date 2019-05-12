@@ -42,7 +42,7 @@ public class MemberVo {
 	}
 	@Override
 	public String toString() {
-		return "MemberDao [no=" + no + ", memberName=" + memberName + ", phoneNumber=" + phoneNumber + ", email="
-				+ email + "]";
+		return "번호 : " + no + ", 이름 : " + memberName + ", 전화번호 : " + phoneNumber + ", 이메일 : " + email;
 	}
+	
 }

@@ -17,12 +17,12 @@ public abstract class AbstractDao<E> implements DaoInterface<E>{
 		Connection conn = null;
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			String url = "jdbc:mariadb://14.32.18.220:3307/bookmall";
+			String url = "jdbc:mariadb://localhost:3307/bookmall";
 			conn = DriverManager.getConnection(url,"bookmall","bookmall");
 		} catch (ClassNotFoundException e) {
 			System.out.println("Driver 로딩 실패");
 		} 
-		System.out.println("Connection open");
+		//System.out.println("Connection open");
 		return conn;
 	}
 	protected void destroyedConnection(Connection conn,PreparedStatement pstmt, ResultSet rs) {
@@ -35,7 +35,7 @@ public abstract class AbstractDao<E> implements DaoInterface<E>{
 				e.printStackTrace();
 			}
 		}
-		System.out.println("ResultSet closed");
+		//System.out.println("ResultSet closed");
 	}
 	protected void destroyedConnection(Connection conn,PreparedStatement pstmt) {
 		if(conn != null) {
@@ -45,7 +45,7 @@ public abstract class AbstractDao<E> implements DaoInterface<E>{
 				e.printStackTrace();
 			}
 		}
-		System.out.println("Connection closed");
+		//System.out.println("Connection closed");
 		if(pstmt != null) {
 			try {
 				pstmt.close();
@@ -53,7 +53,7 @@ public abstract class AbstractDao<E> implements DaoInterface<E>{
 				e.printStackTrace();
 			}
 		}
-		System.out.println("PreparedStatement closed");
+		//System.out.println("PreparedStatement closed");
 	}
 	
 }

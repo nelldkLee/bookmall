@@ -28,7 +28,7 @@ public class OrderDaoTest extends AbstractTest{
 	@Override
 	public void insertTest() {
 		OrderVo vo = new OrderVo();
-		vo.getMemberVo().setNo(1L);
+		vo.setMemberVo(new MemberVo().setNo(1L));
 		vo.setAddress("대한민국 경기도 성남시");
 		List<BookVo> list =  Arrays.asList(new BookVo(1L,30000, 1),
 										   new BookVo(2L,15000, 1),

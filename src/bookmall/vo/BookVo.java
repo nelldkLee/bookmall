@@ -26,8 +26,9 @@ public class BookVo {
 	public Long getNo() {
 		return no;
 	}
-	public void setNo(Long no) {
+	public BookVo setNo(Long no) {
 		this.no = no;
+		return this;
 	}
 	public String getBookName() {
 		return bookName;
@@ -54,13 +55,13 @@ public class BookVo {
 		return bookCount;
 	}
 
-	public void setBookCount(int bookCount) {
+	public BookVo setBookCount(int bookCount) {
 		this.bookCount = bookCount;
+		return this;
 	}
 
 	@Override
 	public String toString() {
-		return "BookVo [no=" + no + ", bookName=" + bookName + ", bookPrice=" + bookPrice + ", bookCount=" + bookCount
-				+ ", categoryVo=" + categoryVo + "]";
+		return "번호 : " + no + ", 책 이름 : " + bookName + ", 책 가격: " + bookPrice;
 	}
 }
