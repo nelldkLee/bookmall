@@ -44,8 +44,6 @@ public class OrderDao extends AbstractDao<OrderVo>{
 			
 			List<BookVo> bookList = vo.getBookList();
 			for(BookVo bookVo: bookList) {
-				System.out.println("--------------------------------");
-				System.out.println(vo);
 				pstmt = conn.prepareStatement(ORDER_BOOK_INSERT);
 				pstmt.setLong(1, bookVo.getNo());
 				pstmt.setLong(2, insertedPK);

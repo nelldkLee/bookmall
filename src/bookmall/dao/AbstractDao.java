@@ -17,7 +17,7 @@ public abstract class AbstractDao<E> implements DaoInterface<E>{
 		Connection conn = null;
 		try {
 			Class.forName("org.mariadb.jdbc.Driver");
-			String url = "jdbc:mariadb://localhost:3307/bookmall";
+			String url = "jdbc:mariadb://192.168.1.36:3307/bookmall";
 			conn = DriverManager.getConnection(url,"bookmall","bookmall");
 		} catch (ClassNotFoundException e) {
 			System.out.println("Driver 로딩 실패");

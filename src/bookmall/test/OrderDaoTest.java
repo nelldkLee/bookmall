@@ -19,8 +19,8 @@ public class OrderDaoTest extends AbstractTest{
 	@Override
 	public void testStart() {
 		dao = new OrderDao();
-		//insertTest();
-		getListTest();
+		insertTest();
+		//getListTest();
 		//updateTest();
 		//deleteTest();
 	}
@@ -36,7 +36,6 @@ public class OrderDaoTest extends AbstractTest{
 		vo.setOrderPrice(99000L);
 		vo.setBookList(list);
 		dao.insert(vo);
-				
 	}
 
 	@Override
